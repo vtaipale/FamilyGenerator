@@ -1,0 +1,17 @@
+# DESBO
+1.1.1={
+	law = true_cognatic_succession
+	law = succ_primogeniture
+}
+400.1.1 = {
+	holder = 9500000 # 
+}
+412.1.1={
+	holder = 9500001 # 
+}
+430.1.1={
+	holder = 9500002 # 
+}
+459.1.1={
+	holder = 9500003 # 
+}

@@ -1,0 +1,34 @@
+# DWhanta
+1.1.1={
+	law = true_cognatic_succession
+	law = succ_primogeniture
+	
+	holder = 9100501 # laur
+}
+20.1.1={
+	holder = 9100502 # mariella
+}
+22.1.1={
+	holder = 9100503 # robertus
+}
+23.1.1={
+	holder = 9100500 # isa
+}
+130.1.1={
+	holder = 9100504 # row
+}
+228.1.1={
+	holder = 9100505 # wendel
+}
+382.1.1={
+	holder = 9100506 # avis
+}
+413.1.1={
+	holder = 9100000 # sea
+}
+566.1.1={
+	holder = 0
+}
+571.1.1={
+	holder = 9100006 # seuna
+}

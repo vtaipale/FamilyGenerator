@@ -1,0 +1,61 @@
+5000001 = {
+	name="D'Hwanta"
+	culture = imperial
+	religion = imperial
+}
+5000002 = {
+	name="D'Hwanta-Probus"
+	culture = imperial
+	religion = imperial
+}
+5000003 = {
+	name="D'Hwanta-Incanta"
+	culture = imperial
+	religion = imperial
+}
+5000004 = {
+	name="D'Hwanta-Rimor"
+	culture = imperial
+	religion = imperial
+}
+5000005 = {
+	name="D'Hwanta-Tranquil"
+	culture = imperial
+	religion = imperial
+}
+5000006 = {
+	name="D'Hwanta-Latro"
+	culture = imperial
+	religion = imperial
+}
+5000007 = {
+	name="D'Hwanta-Julia"
+	culture = imperial
+	religion = imperial
+}
+500008 = {
+	name="D'Hwanta-Mus"
+	culture = imperial
+	religion = imperial
+}
+5000009 = {
+	name="D'Hwanta-Dexter"
+	culture = imperial
+	religion = imperial
+}
+5000010 = {
+	name="D'Hwanta-Perditus"
+	culture = imperial
+	religion = imperial
+}
+5000011 = {
+	name="D'Hwanta-Wendelwelt"
+	culture = imperial
+	religion = imperial
+}
+
+6000001 = {
+	name="D'Esbo"
+	culture = imperial
+	religion = imperial
+}

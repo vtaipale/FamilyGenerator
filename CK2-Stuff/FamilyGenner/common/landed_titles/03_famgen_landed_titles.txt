@@ -1,0 +1,22 @@
+###### fökking hand-done
+
+k_dhwanta = {
+		color={ 135 68 240 }
+		color2={ 255 255 255 }
+		
+		short_name = yes
+
+		title = "ROGUETRADER" 
+		title_female = "ROGUETRADER" 
+		
+}
+k_desbo = {
+		color={ 68 168 77 }
+		color2={ 255 0 255 }
+		
+		short_name = yes
+
+		title = "ROGUETRADER" 
+		title_female = "ROGUETRADER" 
+		
+}
