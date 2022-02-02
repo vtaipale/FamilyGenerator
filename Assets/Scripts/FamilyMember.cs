@@ -13,6 +13,9 @@ public class FamilyMember : MonoBehaviour
 	public int Importance = 15;
 	public int Generation = 2;
 	public int Prestige = 0;
+	public float Fertility = 1.0f;
+	public string Motivation = "";
+	
 	public int FatePoints = 0;
 	public string religion = "imperial";
 	public string culture = "voidborn";
@@ -23,6 +26,8 @@ public class FamilyMember : MonoBehaviour
 	public FamilyMember spouse;
 	public int marriageyear = 0;
 	
+	public string Notes = "";
+
 	public List<string>	traits = new List<string>();
 	
 	public int birth = 500; //m41
@@ -33,16 +38,44 @@ public class FamilyMember : MonoBehaviour
 	public bool processed = false;
 	public bool historic = false; //If do any processing
 	
-	public FamilyMember[] Descendants;
+	public List<FamilyMember>	kills = new List<FamilyMember>();
+
+	//public FamilyMember[] Descendants;
 	
     // Start is called before the first frame update
     void Start()
     {
+		int NumberAncestorsHaveSameName = CheckAncestorsForName();
+
+		if (NumberAncestorsHaveSameName > 1) //urg ugly
+		{
+			if (NumberAncestorsHaveSameName == 2)
+				this.charname += " II";
+			else if (NumberAncestorsHaveSameName == 3)
+				this.charname += " III";
+			else if (NumberAncestorsHaveSameName == 4)
+				this.charname += " IV";
+			else if (NumberAncestorsHaveSameName == 5)
+				this.charname += " V";
+			else if (NumberAncestorsHaveSameName == 6)
+				this.charname += " VI";
+			else if (NumberAncestorsHaveSameName == 7)
+				this.charname += " VII";
+			else if (NumberAncestorsHaveSameName == 8)
+				this.charname += " VIII";
+			else if (NumberAncestorsHaveSameName == 9)
+				this.charname += " IX";
+			else if (NumberAncestorsHaveSameName == 10)
+				this.charname += " X";
+			else
+				this.charname += " X?";
+		}
+        //Debug.Log(this.toString());
+    
 		this.name = GetFullName();
 		
-        //Debug.Log(this.toString());
-    }
-
+	}
+	
     // Update is called once per frame
     void Update()
     {
@@ -51,7 +84,8 @@ public class FamilyMember : MonoBehaviour
 	
 	public void addTrait(string newtrait)
 	{
-		traits.Add(newtrait);
+		if (traits.Contains(newtrait) == false)
+			traits.Add(newtrait);
 	}
 	
 	public string toString()
@@ -74,12 +108,28 @@ public class FamilyMember : MonoBehaviour
 		if (this.mother != null)
 			TheString += "  mother=" + this.mother.charnumber + " # " + mother.GetFullName() + " \n";
 		
-		TheString += "  #Generation " + this.Generation + " \n";
-		TheString += "  #Importance " + this.Importance + " \n";
-		TheString += "  #Prestige "   + this.Prestige + " \n";
-		
+		TheString += "  #Generation =" + this.Generation + " \n";
+		TheString += "  #Importance =" + this.Importance + " \n";
+		TheString += "  #Prestige   ="   + this.Prestige + " \n";
+		TheString += "  #Fertility  = " + this.Fertility + " \n";
+		if (this.Motivation != "")
+			TheString += "  #Motivation ="   + this.Motivation + " \n";
+
+
+		if (this.Notes != "")
+			TheString += "  #Note: "   + this.Notes + " \n";
+
+
 		foreach (string traitstring in traits)
 			TheString += "\n  trait= \"" + traitstring + "\" ";
+		
+		if (this.kills.Count > 0)
+		{
+			TheString += "\n";
+			foreach (FamilyMember victim in kills)
+				TheString += "\n  #killed = \"" + victim.PersonHistoricalNote() + "  "+ victim.deathreason+"\" ";
+		}
+		
 		
 		TheString += "\n\n  " + birth + ".1.1 = { \n   birth = yes \n  }\n";
 	
@@ -146,8 +196,29 @@ public class FamilyMember : MonoBehaviour
 	
 	public int getAge(int CurrentYear)
 	{
-		return CurrentYear - birth;
+		if (this.living == true)
+			return CurrentYear - birth;
+		
+		return death - birth;
 	}
+		
+	public string GetLivingYears()
+	{
+		string returnoitava = "( " + this.birth + " -";
+		
+		if (this.living == false)
+			returnoitava += " " + this.death + " )";
+		else
+			returnoitava += "-> )";
+		
+		return returnoitava;
+	}
+
+	public string PersonHistoricalNote()
+	{
+		return this.GetFullName() + " " +this.GetLivingYears();
+	}
+	
 	public int getParentAmount()
 	{
 		int returnoitava = 0;
@@ -163,6 +234,24 @@ public class FamilyMember : MonoBehaviour
 	{
 		return this.transform.parent.GetComponent<FamilyMember>();
 	}
+	
+	
+	public int CheckAncestorsForName()
+	{
+		int amount = 0;
+		
+		foreach (FamilyMember ancestor in this.GetComponentsInParent<FamilyMember>())
+		{
+			if (ancestor.charname.Equals(this.charname))
+				amount++;
+		}
+		if (amount > 0)
+			Debug.Log("AncesttorNameCheck = " + amount);
+			
+		return amount;
+	}
+	
+	
 	public void Die()
 	{
 		this.deathreason="yes";

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8479252620039585527}
   - component: {fileID: 8479252620039585520}
   m_Layer: 0
-  m_Name: Alexandra
+  m_Name: ExampleFamilyMember
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ BoxCollider:
   m_GameObject: {fileID: 8479252620039585521}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -114,6 +114,8 @@ MonoBehaviour:
   Importance: 16
   Generation: 4
   Prestige: 10
+  Fertility: 1
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: weird
@@ -122,6 +124,7 @@ MonoBehaviour:
   mother: {fileID: 0}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - fair
   - naive_appeaser
@@ -132,4 +135,4 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []

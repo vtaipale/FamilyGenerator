@@ -383,6 +383,8 @@ MonoBehaviour:
   Importance: 16
   Generation: 1
   Prestige: 10
+  Fertility: 1.05
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: imperial
@@ -391,6 +393,7 @@ MonoBehaviour:
   mother: {fileID: 0}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - martial_cleric
   - stressed
@@ -401,7 +404,7 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []
 --- !u!65 &76749569
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1045,6 +1048,200 @@ MonoBehaviour:
   DynastyInt: 0
   DynastyString: 
   BabyFate: 1
+--- !u!1001 &338517397
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1285999307}
+    m_Modifications:
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: traits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: Generation
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: processed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: living
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: historic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: culture
+      value: voidborn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: dynasty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: dynastystring
+      value: D'Hwanta
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: charnumber
+      value: 9100550
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: mother
+      value: 
+      objectReference: {fileID: 1285999306}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: female
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: charname
+      value: Vosgan
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: charextranames
+      value: Zaven
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: birth
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: death
+      value: 196
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: traits.Array.data[0]
+      value: detached_priest
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: traits.Array.data[2]
+      value: adventurer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: Importance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: Prestige
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: father
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: deathreason
+      value: yes
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: murderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585521, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Vosgan Zaven
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.2500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcefca0a61f00364cbda0a85d3b460c3, type: 3}
 --- !u!1 &347896136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1440,8 @@ MonoBehaviour:
   Importance: 15
   Generation: 1
   Prestige: 10
+  Fertility: 1
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: feral
@@ -1251,6 +1450,7 @@ MonoBehaviour:
   mother: {fileID: 0}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - berserker
   birth: 552
@@ -1260,7 +1460,7 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []
 --- !u!65 &361823777
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1853,7 +2053,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: charnumber
-      value: 9100504
+      value: 9100552
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -1953,7 +2153,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -2350,6 +2550,8 @@ MonoBehaviour:
   Importance: 16
   Generation: 1
   Prestige: 15
+  Fertility: 1
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: voidborn
@@ -2358,9 +2560,11 @@ MonoBehaviour:
   mother: {fileID: 0}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - intricate_webweaver
   - hunter
+  - kinslayer
   birth: 522
   death: 823
   deathreason: yes
@@ -2368,7 +2572,7 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []
 --- !u!65 &550219527
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2663,7 +2867,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: Generation
-      value: -6
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -2698,7 +2902,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: charnumber
-      value: 9100503
+      value: 9100530
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -2885,7 +3089,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: Generation
-      value: -8
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -2900,7 +3104,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: charnumber
-      value: 9100501
+      value: 9100510
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -3350,7 +3554,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Processto 799m41
+  m_Text: Processto 825m41
 --- !u!222 &858395233
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3399,6 +3603,8 @@ MonoBehaviour:
   Importance: 16
   Generation: 1
   Prestige: 10
+  Fertility: 0.9
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: forge
@@ -3407,6 +3613,7 @@ MonoBehaviour:
   mother: {fileID: 0}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - scholar
   - fortune_builder
@@ -3417,7 +3624,7 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []
 --- !u!65 &873566091
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3532,6 +3739,8 @@ MonoBehaviour:
   Importance: 16
   Generation: 0
   Prestige: 100
+  Fertility: 1
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: voidborn
@@ -3540,6 +3749,7 @@ MonoBehaviour:
   mother: {fileID: 1278078081}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - fortune_builder
   birth: 403
@@ -3549,7 +3759,7 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []
 --- !u!65 &933255676
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3629,8 +3839,202 @@ Transform:
   - {fileID: 873566094}
   - {fileID: 550219530}
   m_Father: {fileID: 1278078082}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &934891224
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 205587214}
+    m_Modifications:
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: traits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: Generation
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: processed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: living
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: historic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: culture
+      value: voidborn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: dynasty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: dynastystring
+      value: D'Hwanta
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: charnumber
+      value: 9100540
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: mother
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: female
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: charname
+      value: Sargus
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: charextranames
+      value: Justrence
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: birth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: death
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: traits.Array.data[0]
+      value: paranoid
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: traits.Array.data[2]
+      value: adventurer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: Importance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: Prestige
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: father
+      value: 
+      objectReference: {fileID: 205587213}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: deathreason
+      value: duel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: murderer
+      value: 
+      objectReference: {fileID: 1285999306}
+    - target: {fileID: 8479252620039585521, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Sargus Justrence
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.2500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcefca0a61f00364cbda0a85d3b460c3, type: 3}
 --- !u!1 &941509748
 GameObject:
   m_ObjectHideFlags: 0
@@ -3893,6 +4297,8 @@ MonoBehaviour:
   Importance: 16
   Generation: 2
   Prestige: 10
+  Fertility: 1
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: fortress
@@ -3901,6 +4307,7 @@ MonoBehaviour:
   mother: {fileID: 76749568}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - skilled_tactician
   birth: 490
@@ -3910,7 +4317,7 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []
 --- !u!65 &977627027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4311,6 +4718,8 @@ MonoBehaviour:
   Importance: 15
   Generation: 1
   Prestige: 10
+  Fertility: 1
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: frontier
@@ -4319,6 +4728,7 @@ MonoBehaviour:
   mother: {fileID: 0}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - adventurer
   - ambitious
@@ -4329,7 +4739,7 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []
 --- !u!65 &1038125610
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4552,6 +4962,200 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1454392373}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1294414894
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1285999307}
+    m_Modifications:
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: traits.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: Generation
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: processed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: living
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: historic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: culture
+      value: voidborn
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: dynasty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: dynastystring
+      value: D'Hwanta
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: charnumber
+      value: 9100550
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: mother
+      value: 
+      objectReference: {fileID: 1285999306}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: female
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: charname
+      value: Lunastar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: charextranames
+      value: Mariella
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: birth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: death
+      value: 81
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: traits.Array.data[0]
+      value: ambitious
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: traits.Array.data[2]
+      value: adventurer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: Importance
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: Prestige
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: father
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: deathreason
+      value: death_accident
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: murderer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585521, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Lunastar Mariella
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fcefca0a61f00364cbda0a85d3b460c3, type: 3}
 --- !u!1 &1346678451
 GameObject:
   m_ObjectHideFlags: 0
@@ -5117,7 +5721,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: traits.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -5182,7 +5786,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: charnumber
-      value: 9100500
+      value: 9100541
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -5213,6 +5817,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Prestige
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: traits.Array.data[3]
+      value: kinslayer
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585521, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -5257,7 +5866,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585524, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -5819,7 +6428,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: charnumber
-      value: 9100506
+      value: 9100570
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -5971,7 +6580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentYear: 460
-  stopYear: 823
+  stopYear: 825
   funYears: 3702000038020000390200003a0200003b020000bf02000037030000
   RewardYears: 3b020000
   FunYearStart: 567
@@ -6612,7 +7221,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: Generation
-      value: -7
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -6627,7 +7236,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: charnumber
-      value: 9100502
+      value: 9100520
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -7298,7 +7907,7 @@ PrefabInstance:
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: charnumber
-      value: 9100505
+      value: 9100560
       objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
@@ -7689,6 +8298,8 @@ MonoBehaviour:
   Importance: 16
   Generation: 1
   Prestige: 10
+  Fertility: 1.1
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: hive
@@ -7697,6 +8308,7 @@ MonoBehaviour:
   mother: {fileID: 0}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - charismatic_negotiator
   - lustful
@@ -7708,7 +8320,7 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []
 --- !u!65 &1881965456
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8523,6 +9135,8 @@ MonoBehaviour:
   Importance: 16
   Generation: 3
   Prestige: 10
+  Fertility: 1
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: penal
@@ -8531,6 +9145,7 @@ MonoBehaviour:
   mother: {fileID: 0}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - shrewd
   birth: 539
@@ -8540,7 +9155,7 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []
 --- !u!65 &2062561655
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8641,6 +9256,8 @@ MonoBehaviour:
   Importance: 16
   Generation: 1
   Prestige: 10
+  Fertility: 1
+  Motivation: 
   FatePoints: 0
   religion: imperial
   culture: battlefleet
@@ -8649,6 +9266,7 @@ MonoBehaviour:
   mother: {fileID: 0}
   spouse: {fileID: 0}
   marriageyear: 0
+  Notes: 
   traits:
   - tough_soldier
   birth: 472
@@ -8658,7 +9276,7 @@ MonoBehaviour:
   living: 1
   processed: 0
   historic: 1
-  Descendants: []
+  kills: []
 --- !u!65 &2081073978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8973,6 +9591,143 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8479252620218933811}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2130280060
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2130280061}
+  - component: {fileID: 2130280065}
+  - component: {fileID: 2130280064}
+  - component: {fileID: 2130280063}
+  - component: {fileID: 2130280062}
+  m_Layer: 0
+  m_Name: Mariella Royne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2130280061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130280060}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.25, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_Children: []
+  m_Father: {fileID: 1278078082}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2130280062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130280060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92c36cd9ed705104bb2d9d25bc3fc2c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charnumber: 9100571
+  dynasty: 1
+  dynastystring: D'Hwanta
+  charname: Mariella
+  charextranames: Royne
+  Importance: 16
+  Generation: 0
+  Prestige: 100
+  Fertility: 1
+  Motivation: 
+  FatePoints: 0
+  religion: imperial
+  culture: voidborn
+  female: 1
+  father: {fileID: 0}
+  mother: {fileID: 1278078081}
+  spouse: {fileID: 0}
+  marriageyear: 0
+  Notes: 
+  traits:
+  - charismatic_negotiator
+  - shy
+  - stressed
+  birth: 406
+  death: 445
+  deathreason: death_murder
+  murderer: {fileID: 0}
+  living: 1
+  processed: 0
+  historic: 1
+  kills: []
+--- !u!65 &2130280063
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130280060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2130280064
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130280060}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &2130280065
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130280060}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &8479252620218933811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8980,6 +9735,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 933255679}
     m_Modifications:
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: deathreason
+      value: acxcident
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479252620039585520, guid: fcefca0a61f00364cbda0a85d3b460c3,
+        type: 3}
+      propertyPath: death
+      value: 794
+      objectReference: {fileID: 0}
     - target: {fileID: 8479252620039585521, guid: fcefca0a61f00364cbda0a85d3b460c3,
         type: 3}
       propertyPath: m_Name

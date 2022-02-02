@@ -61,11 +61,11 @@ public class HistoryWriter : MonoBehaviour
 				addon +=" ";
 			
 			if (Person.marriageyear == 0)
-				returnoitava += addon + Person.GetFullName() + " " +GetLivingYears(Person)+"\n";
+				returnoitava += addon + PersonHistoricalNote(Person)+"\n";
 			else if (Person.spouse == null)
-				returnoitava += addon + Person.GetFullName() + " " +GetLivingYears(Person)+" --- marr. " +Person.marriageyear+" ouside the Dynasty\n";
+				returnoitava += addon + PersonHistoricalNote(Person)+" --- marr. " +Person.marriageyear+" ouside the Dynasty\n";
 			else
-				returnoitava += addon + Person.GetFullName() + " " +GetLivingYears(Person)+" --- marr. " +Person.marriageyear+ " " + Person.spouse.GetFullName() + " " +GetLivingYears(Person.spouse)+"\n";
+				returnoitava += addon + PersonHistoricalNote(Person)+" --- marr. " +Person.marriageyear+ " " + PersonHistoricalNote(Person.spouse)+"\n";
 		}
 		
 		TheHistory = returnoitava;
@@ -80,6 +80,8 @@ public class HistoryWriter : MonoBehaviour
 	
 	private string WriteYearChronicle(int StartYear)
 	{
+		float startTime = Time.time;
+		
 		int EndYear = FamilyGenner.currentYear;
 		
 		string returnoitava = "Yearly Chronicle for Descendants of "+ FamilyRoot.GetFullName()+ "\n\n--We begin in the year " + StartYear;
@@ -100,7 +102,7 @@ public class HistoryWriter : MonoBehaviour
 			
 			foreach (FamilyMember Person in startingMembers)
 			{
-				returnoitava += "  " +Person.GetFullName() + " " +GetLivingYears(Person)+"\n";
+				returnoitava += "  " +PersonHistoricalNote(Person)+"\n";
 			}
 		}
 		
@@ -135,16 +137,19 @@ public class HistoryWriter : MonoBehaviour
 				nuDeaths.Add(Person);
 			}
 			
+			
+			//the string 
+			
 			if (nuBirths.Count > 0)
 			{
 				returnoitava += "\n There were " + nuBirths.Count + " newborns in the Dynasty:\n";
 			
 				foreach (FamilyMember Person in nuBirths)
 				{
-					returnoitava += "  " + Person.GetFullName() + " " +GetLivingYears(Person);
+					returnoitava += "  " + PersonHistoricalNote(Person);
 					
 					if(Person.getParentAmount() > 0)
-						returnoitava += " was born to " + Person.getImportantParent().GetFullName() + " " +GetLivingYears(Person.getImportantParent()) + ".\n";
+						returnoitava += " was born to " + PersonHistoricalNote(Person.getImportantParent())+ ".\n";
 					else 
 						returnoitava += " was born.\n";
 				}		
@@ -155,13 +160,13 @@ public class HistoryWriter : MonoBehaviour
 			
 				foreach (FamilyMember Person in nuMarriages)
 				{
-					returnoitava += "  " + Person.GetFullName() + " " +GetLivingYears(Person)+"\n   married ";
+					returnoitava += "  " + PersonHistoricalNote(Person)+"\n   married ";
 					
 					if(Person.spouse == null)
 						returnoitava += "outside the Dynasty.\n";
-					else  //dublicates ? TODO fix!
+					else  if (Person.female == true)//only women marriages noted, fix to dublicates
 					{
-						returnoitava += Person.spouse.GetFullName() + " " +GetLivingYears(Person.spouse) +"!\n";
+						returnoitava += PersonHistoricalNote(Person.spouse) +"!\n";
 					}
 				}		
 			}
@@ -172,11 +177,11 @@ public class HistoryWriter : MonoBehaviour
 				foreach (FamilyMember Person in nuDeaths)
 				{
 					if (Person.deathreason == "yes")
-						returnoitava += "  " + Person.GetFullName() + " " +GetLivingYears(Person)+"\n";
+						returnoitava += "  " + PersonHistoricalNote(Person)+"\n";
 					else if (Person.murderer != null)
-						returnoitava += "  " + Person.GetFullName() + " " +GetLivingYears(Person)+" " +Person.deathreason+ " by " + Person.murderer.GetFullName() + " " + GetLivingYears(Person.murderer) +"\n";
+						returnoitava += "  " + PersonHistoricalNote(Person)+" " +Person.deathreason+ " by " + PersonHistoricalNote(Person.murderer) +"\n";
 					else
-						returnoitava += "  " + Person.GetFullName() + " " +GetLivingYears(Person)+" " +Person.deathreason+ "\n";
+						returnoitava += "  " + PersonHistoricalNote(Person)+" " +Person.deathreason+ "\n";
 
 				}		
 			}
@@ -189,17 +194,7 @@ public class HistoryWriter : MonoBehaviour
 				
 		TheHistory = returnoitava;
 		
-		return returnoitava;
-	}
-	
-	private string GetLivingYears(FamilyMember Target)
-	{
-		string returnoitava = "( " + Target.birth + " -";
-		
-		if (Target.living == false)
-			returnoitava += " " + Target.death + " )";
-		else
-			returnoitava += "-> )";
+		Debug.Log("Chronicle Written for " +FamilyRoot+ "!  Duration:" + (Time.time-startTime));
 		
 		return returnoitava;
 	}
@@ -237,20 +232,30 @@ public class HistoryWriter : MonoBehaviour
 		
 		
 	}
-	
+
+	public string PersonHistoricalNote(FamilyMember P)
+	{
+		return P.PersonHistoricalNote();
+	}
 	
 	public void EXPORT()
-	{
+	{		
+		float startTime = Time.time;
+
 		string returnoitava = "";
 		returnoitava += "# SEED : " + Random.seed;
 		
 		returnoitava += this.WriteHistoryAndDescendants(FamilyRoot);
 
 		returnoitava = returnoitava.Replace("\n", System.Environment.NewLine);
+		
+		Debug.Log("Export Text ready, next actual txt!  Duration:" + (Time.time-startTime));
 
 		int randomiser = Random.Range(0,1000);
 
 		System.IO.File.WriteAllText(@"D:\temp\FamGenCharsExport" + randomiser + ".txt", returnoitava);
+		
+		Debug.Log("EXPORT DONE!  Duration:" + (Time.time-startTime));
 
 		Debug.Log("exported TO D: temp FamGenCharsExport" + randomiser + " !");
 
