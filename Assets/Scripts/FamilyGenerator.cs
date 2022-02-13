@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FamilyGenerator : MonoBehaviour
 {	
@@ -10,8 +11,6 @@ public class FamilyGenerator : MonoBehaviour
 	public List<int> funYears = new List<int>();
 	public List<int> RewardYears = new List<int>();
 
-	public int FunYearStart = 567;
-	public int FunYearStop = 571;
 	public int TotalCharNumber = 10;
 	public GameObject FamilyMemberPrefab;
 	
@@ -19,10 +18,14 @@ public class FamilyGenerator : MonoBehaviour
 			
 	public	int[] Dynasties  = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
+	public bool InstantStart = false;
+	public bool InstantReStart = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+		if (InstantStart == true)
+			this.ProcessYears(500);
     }
 
     // Update is called once per frame
@@ -123,54 +126,60 @@ public class FamilyGenerator : MonoBehaviour
 			else if (FamilyPerson.FatePoints > 0)
 			{
 				FamilyPerson.FatePoints--;
-				FamilyPerson.death = currentYear + Random.Range(1,60);
+				FamilyPerson.death = currentYear + Random.Range(1,60+FamilyPerson.Importance);
 			}
 			else 
 			{
 				int FunDeathCheck = Random.Range(0,10);
 				if ((FunDeathCheck > 5) && (FamilyPerson.traits.Contains("inbred")))
 				{	
-					FamilyPerson.Die("death_inbred");
+					FamilyPerson.Die("inbred");
 				}
 				else if (FunDeathCheck > 8)
 				{	
-					int DeathRandomiser = Random.Range (0, 10);
+					int DeathRandomiser = Random.Range (0, 12);
 
 					FamilyPerson.death=currentYear;
 					
 					switch (DeathRandomiser) {
 					case 0:
 						FamilyPerson.murderer=GetRandomAdult();
-						FamilyPerson.Die("death_murder");
+						FamilyPerson.Die("murder");
 						FamilyPerson.murderer.kills.Add(FamilyPerson);
 						FamilyPerson.murderer.addTrait("kinslayer");
 						break;
 					case 1:
-						FamilyPerson.Die("death_murder_unknown");
+						FamilyPerson.Die("murder_unknown");
 						break;
 					case 2:
-						FamilyPerson.Die("death_battle");
+						FamilyPerson.Die("battle");
 						break;
 					case 3:
-						FamilyPerson.Die("death_battle");
+						FamilyPerson.Die("battle");
 						break;
 					case 4:
-						FamilyPerson.Die("death_rabble");
+						FamilyPerson.Die("rabble");
 						break;
 					case 5:
-						FamilyPerson.Die("death_missing");
+						FamilyPerson.Die("missing");
 						break;
 					case 6:
-						FamilyPerson.Die("death_duel");
+						FamilyPerson.Die("duel");
 						break;
 					case 7:
 						FamilyPerson.murderer=GetRandomAdult();
-						FamilyPerson.Die("death_duel");
+						FamilyPerson.Die("duel");
 						FamilyPerson.murderer.kills.Add(FamilyPerson);
 						FamilyPerson.murderer.addTrait("kinslayer");
 						break;
+					case 8:
+						FamilyPerson.Die("vanished");
+						break;
+					case 9:
+						FamilyPerson.Die("duel");
+						break;
 					default:
-						FamilyPerson.Die("death_murder_unknown");
+						FamilyPerson.Die("murder_unknown");
 						break;
 					}
 					
@@ -222,8 +231,8 @@ public class FamilyGenerator : MonoBehaviour
 
 				case -4:
 					FamilyPerson.death = currentYear;
-					FamilyPerson.Die("death_missing"); //liian musta lammas
-					Debug.Log("SHAME - " + FamilyPerson.GetFullName());
+					FamilyPerson.Die("missing"); //liian musta lammas
+					//Debug.Log("SHAME - " + FamilyPerson.GetFullName());
 					break;
 				case -3:
 					FamilyPerson.addTrait(ReallyBadTraits [(Mathf.RoundToInt (Random.value * (ReallyBadTraits.GetLength (0) - 1)))]);
@@ -240,7 +249,8 @@ public class FamilyGenerator : MonoBehaviour
 				case 4:
 					FamilyPerson.addTrait(ReallyGoodTraits [(Mathf.RoundToInt (Random.value * (ReallyGoodTraits.GetLength (0) - 1)))] );
 					FamilyPerson.name = "**-" +FamilyPerson.GetFullName();
-					Debug.Log("WOW - " + FamilyPerson.GetFullName());
+					FamilyPerson.FatePoints++;
+					//Debug.Log("WOW - " + FamilyPerson.GetFullName());
 					break;
 				default:
 					//nothing special
@@ -361,6 +371,8 @@ public class FamilyGenerator : MonoBehaviour
 		GameObject NewMember = (GameObject)Instantiate (FamilyMemberPrefab, (HappyParent.transform.position + new Vector3(0,-1,0)), HappyParent.transform.rotation);
 		//GameObject NewMember = (GameObject)Instantiate (FamilyMemberPrefab, (HappyParent.transform.position), HappyParent.transform.rotation);
 	
+		NewMember.transform.SetParent(HappyParent.transform);
+		
 		FamilyMember NewKid = NewMember.GetComponent <FamilyMember>();
 
 		TotalCharNumber++;
@@ -415,13 +427,42 @@ public class FamilyGenerator : MonoBehaviour
 				//NewKid.charextranames += " " + FemaleFirstNames [(Mathf.RoundToInt (Random.value * (FemaleFirstNames.GetLength (0) - 1)))];*/
 		}
 		
+		if (NewKid.historic == false)
+			{
+				int NumberAncestorsHaveSameName = NewKid.CheckAncestorsForName();
+
+				if (NumberAncestorsHaveSameName > 1) //urg ugly
+				{
+					if (NumberAncestorsHaveSameName == 2)
+						NewKid.charextranames += "II ";
+					else if (NumberAncestorsHaveSameName == 3)
+						NewKid.charextranames += "III ";
+					else if (NumberAncestorsHaveSameName == 4)
+						NewKid.charextranames += "IV ";
+					else if (NumberAncestorsHaveSameName == 5)
+						NewKid.charextranames += "V ";
+					else if (NumberAncestorsHaveSameName == 6)
+						NewKid.charextranames += "VI ";
+					else if (NumberAncestorsHaveSameName == 7)
+						NewKid.charextranames += "VII ";
+					else if (NumberAncestorsHaveSameName == 8)
+						NewKid.charextranames += "VIII ";
+					else if (NumberAncestorsHaveSameName == 9)
+						NewKid.charextranames += "IX ";
+					else if (NumberAncestorsHaveSameName == 10)
+						NewKid.charextranames += "X ";
+					else
+						NewKid.charextranames += "X? ";
+				}
+			}
+		
 		 if (NewKid.female == false)
 		{
-			NewKid.charextranames = MaleFirstNames [(Mathf.RoundToInt (Random.value * (MaleFirstNames.GetLength (0) - 1)))];
+			NewKid.charextranames += MaleFirstNames [(Mathf.RoundToInt (Random.value * (MaleFirstNames.GetLength (0) - 1)))];
 		}
 		else
 		{
-			NewKid.charextranames = FemaleFirstNames [(Mathf.RoundToInt (Random.value * (FemaleFirstNames.GetLength (0) - 1)))];
+			NewKid.charextranames += FemaleFirstNames [(Mathf.RoundToInt (Random.value * (FemaleFirstNames.GetLength (0) - 1)))];
 		}
 		
 		if (HappyParent.female == false)
@@ -448,7 +489,7 @@ public class FamilyGenerator : MonoBehaviour
 					NewKid.culture = "childOfDynasty";
 					NewKid.FatePoints--;
 					NewKid.addTrait("inbred");
-					Debug.Log("Oh nou! Inbread:" + NewKid.GetFullName()); 
+					//Debug.Log("Oh nou! Inbread:" + NewKid.GetFullName()); 
 				}
 				else if (HappyParent.culture == "noble" | (HappyParent.spouse.culture == "noble"))
 					NewKid.culture = "childOfDynasty";
@@ -497,7 +538,6 @@ public class FamilyGenerator : MonoBehaviour
 		
 		//HappyParent.Descendants
 		
-		NewMember.transform.SetParent(HappyParent.transform);
 		
 		//Debug.Log("NEW KID!");
 		
@@ -520,45 +560,66 @@ public class FamilyGenerator : MonoBehaviour
 			
 					Victim.death=currentYear;
 					
-					int DeathRandomiser = Random.Range (0, 8);
+					int DeathRandomiser = Random.Range (0, 15);
 
 					switch (DeathRandomiser) {
 
 					case 0:
-						Victim.Die("death_murder");
+						Victim.Die("murder");
 						Victim.murderer=GetRandomAdult(true);
 						Victim.murderer.kills.Add(Victim);
 						Victim.murderer.addTrait("kinslayer");
 						break;
 					case 1:
-						Victim.Die("death_murder_unknown");
+						Victim.Die("murder_unknown");
 						break;
 					case 2:
-						Victim.Die("death_murder");
+						Victim.Die("murder");
 						Victim.murderer=GetRandomAdult();
 						Victim.murderer.kills.Add(Victim);
 						Victim.murderer.addTrait("kinslayer");
 						break;
 					case 3:
-						Victim.Die("death_murder");
+						Victim.Die("murder");
 						Victim.murderer=GetRandomAdult(false);
 						Victim.murderer.kills.Add(Victim);
 						Victim.murderer.addTrait("kinslayer");
-						break;
+						break;		
 					case 4:
-						Victim.Die("death_missing");
+						Victim.Die("battle");
 						break;
 					case 5:
-						Victim.Die("death_duel");
+						Victim.Die("missing");
+						break;
+					case 6:
+						Victim.Die("duel");
 						Victim.murderer=GetRandomAdult(false);
 						Victim.murderer.kills.Add(Victim);
 						Victim.murderer.addTrait("kinslayer");
 						break;
-					case 6:
-						Victim.Die("death_duel");
+					case 7:
+						Victim.Die("duel");
+						break;
+					case 8:
+						Victim.Die("dungeon");
+						Victim.murderer=GetRandomAdult(false);
+						Victim.murderer.kills.Add(Victim);
+						Victim.murderer.addTrait("kinslayer");
+						break;
+					case 9:
+						Victim.Die("drank_poison");
+						break;
+					case 10:
+						Victim.Die("vanished");
+						break;	
+					case 11:
+						Victim.Die("execution");
+						Victim.murderer=GetRandomAdult(true);
+						Victim.murderer.kills.Add(Victim);
+						Victim.murderer.addTrait("kinslayer");
 						break;
 					default:
-						Victim.Die("death_murder_unknown");
+						Victim.Die("murder_unknown");
 						break;
 					}
 					
@@ -601,7 +662,13 @@ public class FamilyGenerator : MonoBehaviour
 			if (Dynasties[index] == 0)
 			{
 				Debug.LogWarning ("ERROR no members in dynasty " + index + "!");
+				if (InstantReStart == true)
+				{
+					this.LoadNewScene(1);
+				}
+				
 				return false;
+
 			}
 		}
 		
@@ -610,6 +677,11 @@ public class FamilyGenerator : MonoBehaviour
 		
 	}
 	
+	
+	public void LoadNewScene(int sceneToLoad)
+	{
+		SceneManager.LoadScene(sceneToLoad);
+	}
 	
 	public bool MarriageCheck(FamilyMember WantsMarried)
 	{
@@ -674,6 +746,20 @@ public class FamilyGenerator : MonoBehaviour
 		return AliveMembers;
 	}
 	
+	public List<FamilyMember> GetAllLivingAdults(int QuestionYear)
+	{
+		List<FamilyMember> AliveMembers = new List<FamilyMember>();
+		
+		foreach (FamilyMember Person in FindObjectsOfType<FamilyMember>())
+		{	
+			if (Person.living == true && Person.birth <= QuestionYear && Person.death > QuestionYear )	
+			{
+				AliveMembers.Add(Person);
+			}
+		}
+		return AliveMembers;
+	}
+	
 	public FamilyMember GetRandomAdult(bool historicity)
 	{
 		//List<FamilyMember> AliveMembers = GetAllLivingAdults(historicity);
@@ -695,8 +781,7 @@ public class FamilyGenerator : MonoBehaviour
 		return 	AliveMembers [(Mathf.RoundToInt (Random.value * (AliveMembers.GetLength (0) - 1)))];
 		
 	}
-	
-	
+
 	string[] ReallyGoodTraits = new string[] {
 		"genius",
 		"fair",
@@ -804,10 +889,16 @@ public class FamilyGenerator : MonoBehaviour
 		"Endurance",
 		"Fortune",
 		"Fortune",
+		"Fortune",
+		"Fortune",
+		"Fortune",
 		"Vengeance",
 		"Vengeance",
 		"Renown",
 		"Renown",
+		"Renown",
+		"Pride",
+		"Pride",
 		"Pride",
 		"Pride",
 		"Prestige",
@@ -827,10 +918,15 @@ public class FamilyGenerator : MonoBehaviour
 	};
 	string[] MaleFirstNames = new string[] {
        
-       "Sean",        
+       "Sean",       
 	   "Sean",
 	   "Sean",
        "Sean",
+       "Laurelius",
+       "Laurelius",
+       "Laurelius",
+       "Laurelius",
+       "Laurelius",
        "Laurelius",
        "Laurelius",
        "Laurelius",
@@ -844,9 +940,18 @@ public class FamilyGenerator : MonoBehaviour
        "Jacob",
 
        "Tomazo",
-       "Ambosius",
+       "Ambrosius",
        "Timoteus",
        "Matheus",
+
+       "Victrix",
+       "Macharius",
+       "Casmir",
+       "Lucien",
+       "Roland",
+       "Zadok",
+       "Luc",
+       "Jared",
 
        "Winston",
        "Lillard",
@@ -870,10 +975,6 @@ public class FamilyGenerator : MonoBehaviour
         "Gavais",
         "Bort",
         "Jerry",
-
-        "Bathul",
-        "Ketil",
-        "Erue",
 
         "Frogor",
         "Karhu",
@@ -936,7 +1037,7 @@ public class FamilyGenerator : MonoBehaviour
         "Henry",
         "Karl",
         "Luis",
-	//Roman
+//Roman
         "Pupius",
         "Hostus",
         "Titus",
@@ -966,7 +1067,7 @@ public class FamilyGenerator : MonoBehaviour
         "Statius",
         "Aulus",
         "Ulpius",
-	//Shakespearean
+//Shakespearean
         "Camillo",
         "Fortinbras",
         "Aeneas",
@@ -995,7 +1096,7 @@ public class FamilyGenerator : MonoBehaviour
         "Iago",
         "Philemon",
 
-	//Scottish
+//Scottish
         "Sean",
         "Seth",
         "Corey",
@@ -1012,7 +1113,7 @@ public class FamilyGenerator : MonoBehaviour
         "Harley",
         "Matthew",
         "Callan",
-	//Victorean
+//Victorean
         "Orion",
         "Ernst",
         "Wyatt",
@@ -1035,7 +1136,7 @@ public class FamilyGenerator : MonoBehaviour
         "Ellis",
         "Antone",
         "Avery",
-	//AngloSax
+//AngloSax
         "Hunbald",
         "Scenwulf",
         "Cynwulf",
@@ -1057,7 +1158,23 @@ public class FamilyGenerator : MonoBehaviour
         "Wilgils",
         "Baerwald",
         "Coleman",
-        "Helmheard"
+        "Helmheard",
+//Italian
+
+        "Aureliano",
+        "Orazio",
+        "Aidano",
+        "Giona",
+        "Candido",
+        "Brancaleone",
+        "Geronzio",
+        "Accursio",
+        "Maurizio",
+        "Bonaldo",
+        "Sarbello",
+        "Vitale",
+        "Sante",
+        "Umile",
     };
     
 string[] FemaleFirstNames = new string[] {
@@ -1090,6 +1207,8 @@ string[] FemaleFirstNames = new string[] {
         "Alex",
         "Yara",
         "Rachel",
+        "Zoe",
+        "Theophina",
 
         "Jane",
         "Mary",
@@ -1098,7 +1217,6 @@ string[] FemaleFirstNames = new string[] {
         "Vyce",
         "Felixia",
         "Alexandria",
-        "Gweythe",
         "Lily",
         "Catherine",
         "Oceania",
@@ -1149,6 +1267,9 @@ string[] FemaleFirstNames = new string[] {
         "Hailey",
         "Ida",
         "Isidora",
+        "Isperia",
+        "Iratha",
+        "Iosefka",
         "Jenessa",
         "Joan",
         "Judi",
@@ -1157,7 +1278,7 @@ string[] FemaleFirstNames = new string[] {
         "Misty",
         "Kiara",
         "Rexa",
-	//Gothic
+//Gothic
         "Elja",
         "Emelia",
         "Lorelei",
@@ -1187,7 +1308,7 @@ string[] FemaleFirstNames = new string[] {
         "Heidrun",
         "Mira",
         "Arika",
-	//Roman
+//Roman
         "Bantia",
         "Attia",
         "Clodia",
@@ -1217,8 +1338,7 @@ string[] FemaleFirstNames = new string[] {
         "Allectia",
         "Petrasia",
         "Helvetia",
-	//Shakespear
-        "Alice",
+//Shakespear
         "Cordelia",
         "Rosaline",
         "Timandra",
@@ -1243,7 +1363,7 @@ string[] FemaleFirstNames = new string[] {
         "Constance",
         "Pucelle",
         "Page",
-	//Scott
+//Scott
         "Annie",
         "Alexandra",
         "Ellis",
@@ -1258,10 +1378,9 @@ string[] FemaleFirstNames = new string[] {
         "Aimee",
         "Clara",
         "Caoimhe",
-        "Eva",
         "Abigail",
         "Amber",
-	//Victorian
+//Victorian
         "Gretchen",
         "Ressie",
         "Adline",
@@ -1280,7 +1399,7 @@ string[] FemaleFirstNames = new string[] {
         "Minta",
         "Huldah",
         "Odelia",
-	//Angosax
+//Angosax
         "Hugeburc",
         "Brihtiue",
         "Wulfhild",
@@ -1300,7 +1419,32 @@ string[] FemaleFirstNames = new string[] {
         "Eadguth",
         "Somerhild",
         "Edusa",
-        "Wlfrun"
+        "Wlfrun",
+//Italic
+
+        "Filippa",
+        "Cirilla",
+        "Ortesia",
+        "Cunegonda",
+        "Venera",
+        "Savina",
+        "Batilda",
+        "Simonetta",
+        "Palmira",
+        "Estela",
+        "Dorotea",
+        "Diodata",
+        "Allegra",
+        "Cordelia",
+        "Delizia",
+        "Miriam",
+        "Floridia",
+        "Ines",
+        "Livia",
+        "Aurora",
+        "Vissia"
+
     };
+
 
 }

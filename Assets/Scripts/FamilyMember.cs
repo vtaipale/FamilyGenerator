@@ -8,7 +8,7 @@ public class FamilyMember : MonoBehaviour
 	public int dynasty = 1;
 	public string dynastystring = "D'Hwanta";
 	public string charname = "Ketil";
-	public string charextranames = "Egil";
+	public string charextranames = "";
 	
 	public int Importance = 15;
 	public int Generation = 2;
@@ -43,35 +43,8 @@ public class FamilyMember : MonoBehaviour
 	//public FamilyMember[] Descendants;
 	
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-		int NumberAncestorsHaveSameName = CheckAncestorsForName();
-
-		if (NumberAncestorsHaveSameName > 1) //urg ugly
-		{
-			if (NumberAncestorsHaveSameName == 2)
-				this.charname += " II";
-			else if (NumberAncestorsHaveSameName == 3)
-				this.charname += " III";
-			else if (NumberAncestorsHaveSameName == 4)
-				this.charname += " IV";
-			else if (NumberAncestorsHaveSameName == 5)
-				this.charname += " V";
-			else if (NumberAncestorsHaveSameName == 6)
-				this.charname += " VI";
-			else if (NumberAncestorsHaveSameName == 7)
-				this.charname += " VII";
-			else if (NumberAncestorsHaveSameName == 8)
-				this.charname += " VIII";
-			else if (NumberAncestorsHaveSameName == 9)
-				this.charname += " IX";
-			else if (NumberAncestorsHaveSameName == 10)
-				this.charname += " X";
-			else
-				this.charname += " X?";
-		}
-        //Debug.Log(this.toString());
-    
 		this.name = GetFullName();
 		
 	}
@@ -141,7 +114,7 @@ public class FamilyMember : MonoBehaviour
 		}
 		if (this.living == false)
 		{
-			if (deathreason == "death_murder")
+			if (deathreason == "murder")
 			{
 				TheString += "  " + death + ".1.1 = { \n  death = {death_reason = death_murder \n ";
 			
@@ -151,7 +124,7 @@ public class FamilyMember : MonoBehaviour
 				}
 				TheString += "  } } ";
 			}				
-			else if (deathreason == "death_duel")
+			else if (deathreason == "duel")
 							{
 				TheString += "  " + death + ".1.1 = { \n  death = {death_reason = death_duel \n ";
 			
@@ -160,17 +133,29 @@ public class FamilyMember : MonoBehaviour
 					TheString += "   killer = " + murderer.charnumber + " # " + murderer.GetFullName() + " \n ";
 				}
 				TheString += "  } } ";
+			}
+			else if (deathreason == "dungeon")
+							{
+				TheString += "  " + death + ".1.1 = { \n  death = {death_reason = death_dungeon \n ";
+			
+				if (this.murderer != null)
+				{
+					TheString += "   killer = " + murderer.charnumber + " # " + murderer.GetFullName() + " \n ";
+				}
+				TheString += "  } } ";
 			}	
-			else if (deathreason == "death_murder_unknown")
-				TheString += "  " + death + ".1.1 = { \n   death = { death_reason = death_murder_unknown } \n  }";
-			else if (deathreason == "death_battle")
-				TheString += "  " + death + ".1.1 = { \n   death = { death_reason = death_battle } \n  }";
-			else if (deathreason == "death_rabble")
-				TheString += "  " + death + ".1.1 = { \n   death = { death_reason = death_rabble } \n  }";
-			else if (deathreason == "death_missing")
-				TheString += "  " + death + ".1.1 = { \n   death = { death_reason = death_missing } \n  }";
-			else if (deathreason == "death_inbred")
-				TheString += "  " + death + ".1.1 = { \n   death = { death_reason = inbred } \n  }";
+			else if (deathreason == "execution")
+							{
+				TheString += "  " + death + ".1.1 = { \n  death = {death_reason = death_execution \n ";
+			
+				if (this.murderer != null)
+				{
+					TheString += "   killer = " + murderer.charnumber + " # " + murderer.GetFullName() + " \n ";
+				}
+				TheString += "  } } ";
+			}			
+			else if (deathreason != "yes")
+				TheString += "  " + death + ".1.1 = { \n   death = { death_reason = "+deathreason+" } \n  }";
 			else
 				TheString += "  " + death + ".1.1 = { \n   death = yes \n  }"; //different death types later
 		}
@@ -242,11 +227,11 @@ public class FamilyMember : MonoBehaviour
 		
 		foreach (FamilyMember ancestor in this.GetComponentsInParent<FamilyMember>())
 		{
-			if (ancestor.charname.Equals(this.charname))
+			if (ancestor.charname.Contains(this.charname))
 				amount++;
 		}
-		if (amount > 0)
-			Debug.Log("AncesttorNameCheck = " + amount);
+		//if (amount > 0)
+			//Debug.Log("AncesttorNameCheck = " + amount);
 			
 		return amount;
 	}

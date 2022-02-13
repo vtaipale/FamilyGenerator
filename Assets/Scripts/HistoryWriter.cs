@@ -259,6 +259,55 @@ public class HistoryWriter : MonoBehaviour
 
 		Debug.Log("exported TO D: temp FamGenCharsExport" + randomiser + " !");
 
+
+
+		returnoitava = "";
+		returnoitava += "# SEED : " + Random.seed;
+		
+		returnoitava += this.WriteHistoryAndDescendants_SHORT(FamilyRoot);
+
+		returnoitava = returnoitava.Replace("\n", System.Environment.NewLine);
+		
+		Debug.Log("Export Text ready, next actual txt!  Duration:" + (Time.time-startTime));
+
+		System.IO.File.WriteAllText(@"D:\temp\FamGenCharsExport_Short" + randomiser + ".txt", returnoitava);
+		
+		Debug.Log("EXPORT DONE!  Duration:" + (Time.time-startTime));
+
+		Debug.Log("Short exported TO D: temp FamGenCharsExport_Short" + randomiser + " !");
+
+
+
+
+		returnoitava = "";
+		
+		
+		foreach (FamilyMember Person in FamilyGenner.GetAllLivingAdults(801))
+		{
+			string addon ="";
+			for (int index = 0; index < Person.Generation; index++)
+				addon +=" ";
+			
+			if (Person.marriageyear == 0)
+				returnoitava += addon + PersonHistoricalNote(Person)+"\n";
+			else if (Person.spouse == null)
+				returnoitava += addon + PersonHistoricalNote(Person)+" --- marr. " +Person.marriageyear+" ouside the Dynasty\n";
+			else
+				returnoitava += addon + PersonHistoricalNote(Person)+" --- marr. " +Person.marriageyear+ " " + PersonHistoricalNote(Person.spouse)+"\n";
+		}
+		
+		TheHistory = returnoitava;
+
+		returnoitava = returnoitava.Replace("\n", System.Environment.NewLine);
+		
+		Debug.Log("Export Text ready, next actual txt!  Duration:" + (Time.time-startTime));
+
+		System.IO.File.WriteAllText(@"D:\temp\FamGenCharsExport_Alive801" + randomiser + ".txt", returnoitava);
+		
+		Debug.Log("Alive EXPORT DONE!  Duration:" + (Time.time-startTime));
+
+		Debug.Log("Alives exported TO D: temp FamGenCharsExport" + randomiser + " !");
+
 	}
 	
 }

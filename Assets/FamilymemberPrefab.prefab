@@ -94,16 +94,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charnumber: 1
   dynasty: 1
+  dynastystring: D'Hwanta
   charname: Ketil
-  charextranames: Egil
+  charextranames: 
+  Importance: 9
+  Generation: 2
+  Prestige: 0
+  Fertility: 1
+  Motivation: 
+  FatePoints: 0
   religion: imperial
   culture: noble
   female: 0
   father: {fileID: 0}
   mother: {fileID: 0}
+  spouse: {fileID: 0}
+  marriageyear: 0
+  Notes: 
+  traits: []
   birth: 700
   death: 9999
+  deathreason: no
+  murderer: {fileID: 0}
   living: 1
   processed: 0
-  Descendants: []
-  Importance: 9
+  historic: 0
+  kills: []
