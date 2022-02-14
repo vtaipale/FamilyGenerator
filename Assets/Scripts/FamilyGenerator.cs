@@ -752,12 +752,56 @@ public class FamilyGenerator : MonoBehaviour
 		
 		foreach (FamilyMember Person in FindObjectsOfType<FamilyMember>())
 		{	
-			if (Person.living == true && Person.birth <= QuestionYear && Person.death > QuestionYear )	
+			if (Person.birth <= QuestionYear && Person.death > QuestionYear )	
 			{
 				AliveMembers.Add(Person);
 			}
 		}
 		return AliveMembers;
+	}
+	
+	public List<FamilyMember> GetAllAdultsFiltered(string QuestionTrait, bool HasYesNo)
+	{
+		List<FamilyMember> MembersReturn = new List<FamilyMember>();
+		
+		foreach (FamilyMember Person in FindObjectsOfType<FamilyMember>())
+		{	
+		
+			if (HasYesNo == true && Person.traits.Contains(QuestionTrait) )	
+			{
+				MembersReturn.Add(Person);
+			}
+		}
+		return MembersReturn;
+	}
+	
+	public List<FamilyMember> GetAllLivingAdultsFiltered(int QuestionYear, string QuestionTrait, bool HasYesNo)
+	{
+		List<FamilyMember> MembersReturn = new List<FamilyMember>();
+		
+		foreach (FamilyMember Person in this.GetAllLivingAdults(QuestionYear))
+		{	
+		
+			if (HasYesNo == Person.traits.Contains(QuestionTrait) )	
+			{
+				MembersReturn.Add(Person);
+			}
+		}
+		return MembersReturn;
+	}	
+	public List<FamilyMember> GetAllLivingAdultsFilteredByCulture(int QuestionYear, string QuestionTrait, bool HasYesNo)
+	{
+		List<FamilyMember> MembersReturn = new List<FamilyMember>();
+		
+		foreach (FamilyMember Person in this.GetAllLivingAdults(QuestionYear))
+		{	
+		
+			if (HasYesNo == Person.culture.Equals(QuestionTrait) )	
+			{
+				MembersReturn.Add(Person);
+			}
+		}
+		return MembersReturn;
 	}
 	
 	public FamilyMember GetRandomAdult(bool historicity)

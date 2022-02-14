@@ -204,6 +204,51 @@ public class FamilyMember : MonoBehaviour
 		return this.GetFullName() + " " +this.GetLivingYears();
 	}
 	
+	public string PersonHistoricalNoteLong()
+	{
+		string returnoitava = this.GetFullName() + " " +this.GetLivingYears();
+		returnoitava += " #I:" + this.Importance + " #P:"+ this.Prestige + " ";
+		foreach (string traitstring in traits)
+			returnoitava += " " + traitstring;
+		
+		return returnoitava;
+	}
+	public string PersonHistoricalNoteCommaSeparatedValues()
+	{
+		string returnoitava = "";
+		returnoitava += this.charnumber +";";
+		returnoitava += this.charname +";";
+		returnoitava += this.charextranames +";";
+		returnoitava += this.dynasty +";";
+		returnoitava += this.dynastystring +";";
+		returnoitava += this.culture +";";
+		returnoitava += this.birth +";";
+		returnoitava += this.death +";";
+		returnoitava += this.deathreason +";";
+		returnoitava += this.Motivation +";";
+		returnoitava += this.Generation +";";
+		returnoitava += this.Importance +";";
+		returnoitava += this.Prestige +";";
+		returnoitava += this.kills.Count +";";
+		foreach (string traitstring in traits)
+			returnoitava += "t:"+traitstring +" ";
+		returnoitava += ";";
+		returnoitava += this.getImportantParent().charnumber +";";
+		if (marriageyear > 0)
+			returnoitava += this.marriageyear +";";
+		else 
+			returnoitava += ";";
+		if (this.spouse != null)
+			returnoitava += this.spouse.charnumber +";";
+		else if (marriageyear > 0)
+			returnoitava += "outside;";
+		else 
+			returnoitava += ";";
+		
+
+		return returnoitava;
+	}
+	
 	public int getParentAmount()
 	{
 		int returnoitava = 0;
