@@ -160,13 +160,16 @@ public class HistoryWriter : MonoBehaviour
 			
 				foreach (FamilyMember Person in nuMarriages)
 				{
-					returnoitava += "  " + PersonHistoricalNote(Person)+"\n   married ";
-					
-					if(Person.spouse == null)
-						returnoitava += "outside the Dynasty.\n";
-					else  if (Person.female == true)//only women marriages noted, fix to dublicates
+					if (Person.female == true)//only women marriages noted, fix to dublicates
 					{
-						returnoitava += PersonHistoricalNote(Person.spouse) +"!\n";
+						returnoitava += "  " + PersonHistoricalNote(Person)+"\n   married ";
+						
+						if(Person.spouse == null)
+							returnoitava += "outside the Dynasty.\n";
+						else  
+						{
+							returnoitava += PersonHistoricalNote(Person.spouse) +"!\n";
+						}
 					}
 				}		
 			}
@@ -198,7 +201,97 @@ public class HistoryWriter : MonoBehaviour
 		
 		return returnoitava;
 	}
+	
+	public void b_WriteYearBook(int TheYears)
+	{
+		this. WriteYearBook(TheYears);
+	}
+	
+	private string WriteYearBook(int StartYear)
+	{
+		string returnoitava = "Yearbook for Descendants of "+ FamilyRoot.GetFullName()+ "\n--YEAR" + StartYear + "m41\n\n";
+				
+		foreach (FamilyMember Person in FamilyGenner.GetAllLivingAdultsFilteredByCulture(StartYear, "childOfDynasty", false))
+		{
+			
+			string addon ="";
+			for (int index = 0; index < Person.Generation; index++)
+			{
+				addon +=" ";
+			}
+			if (Person.marriageyear == 0)
+				returnoitava += addon + PersonHistoricalNoteLong(Person)+"\n";
+			else if (Person.spouse == null)
+				returnoitava += addon + PersonHistoricalNoteLong(Person)+" --- marr. " +Person.marriageyear+" ouside the Dynasty\n";
+			else
+				returnoitava += addon + PersonHistoricalNoteLong(Person)+" --- marr. " +Person.marriageyear+ " " + PersonHistoricalNote(Person.spouse)+"\n";
+			
+		}
+		
+		Debug.Log("Yearbook Written for " +FamilyRoot+ "!");
+		
+		TheHistory = returnoitava;
 
+		return returnoitava;
+	}
+	
+	public void b_WriteYearBookCSV(int TheYears)
+	{
+		this. WriteYearBookCSV(TheYears);
+	}
+	
+	private string WriteYearBookCSV(int StartYear)
+	{
+		string returnoitava = "";
+			
+			
+		List<FamilyMember> TurnerList = new List<FamilyMember>();
+	
+		foreach (FamilyMember Person in FamilyGenner.GetAllLivingAdultsFilteredByCulture(StartYear, "owly", false))
+		{
+			TurnerList.Add(Person);
+		}
+		foreach (FamilyMember Person in TurnerList)
+		{
+			returnoitava += Person.PersonHistoricalNoteCommaSeparatedValues()+"\n";
+		}
+		
+		Debug.Log("Yearbook Written for " +FamilyRoot+ "!");
+		
+		TheHistory = returnoitava;
+
+		return returnoitava;
+	}
+	
+	public void b_FindParent(FamilyMember Question)
+	{
+		this. FindParent(Question);
+	}
+	
+	private string FindParent(FamilyMember Question)
+	{
+		string returnoitava = "";
+			
+		List<FamilyMember> TurnerList = new List<FamilyMember>();
+	
+		foreach (FamilyMember Person in FamilyGenner.FindParent(Question))
+		{
+			TurnerList.Add(Person);
+		}
+		foreach (FamilyMember Person in TurnerList)
+		{
+			
+		FamilyMember[] Kids = Person.gameObject.GetComponentsInChildren<FamilyMember>();
+			
+			returnoitava += Person.PersonHistoricalNoteCommaSeparatedValues()+";"+ Kids.Length +"\n";
+		}
+		
+		Debug.Log("PotentiaParents Written for " +Question+ "!");
+		
+		TheHistory = returnoitava;
+
+		return returnoitava;
+	}
 	private string AnalyzeDescendants(FamilyMember Target)
 	{
 		int AliveMembers = 0;
@@ -235,7 +328,18 @@ public class HistoryWriter : MonoBehaviour
 
 	public string PersonHistoricalNote(FamilyMember P)
 	{
+		
+		if (P.culture=="childOfDynasty")
+		{
+			return "--CxD " + P.GetFullName();
+		}
+		
 		return P.PersonHistoricalNote();
+	}
+	
+	public string PersonHistoricalNoteLong(FamilyMember P)
+	{
+		return P.PersonHistoricalNoteLong();
 	}
 	
 	public void EXPORT()
