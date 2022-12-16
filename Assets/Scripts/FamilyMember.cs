@@ -249,6 +249,52 @@ public class FamilyMember : MonoBehaviour
 		return returnoitava;
 	}
 	
+	public string PersonHistoricalDetailCommaSeparatedValues()
+	{
+		string returnoitava = "";
+		returnoitava += this.charnumber +";";
+		if (this.female == true)
+			returnoitava += "Lady;";
+		else 
+			returnoitava += "Sir;";
+		returnoitava += this.charname + " " + this.charextranames +";";
+		returnoitava += this.dynasty +";";
+		returnoitava += this.dynastystring +";";
+		returnoitava += this.culture +";";
+		returnoitava += this.birth +";";
+		returnoitava += this.death +";";
+		if (this.deathreason == "yes")
+			returnoitava += "Old Age;";
+		else if (this.deathreason == "")
+			returnoitava += "-;";
+		else 
+			returnoitava += this.deathreason +";";
+		returnoitava += this.Motivation +";";
+		returnoitava += this.Generation +";";
+		returnoitava += this.Importance +";";
+		returnoitava += this.Prestige +";";
+		returnoitava += this.kills.Count +";";
+		foreach (string traitstring in traits)
+			returnoitava += "t:"+traitstring +" ";
+		returnoitava += ";";
+		if (this.getImportantParent() != null)
+			returnoitava += this.getImportantParent().PersonHistoricalNote() +";";
+		else 
+			returnoitava += ";";
+		if (marriageyear > 0)
+			returnoitava += this.marriageyear +";";
+		else 
+			returnoitava += ";";
+		if (this.spouse != null)
+			returnoitava += this.spouse.PersonHistoricalNote() +";";
+		else if (marriageyear > 0)
+			returnoitava += "outside;";
+		else 
+			returnoitava += ";";
+		
+
+		return returnoitava;
+	}
 	public int getParentAmount()
 	{
 		int returnoitava = 0;

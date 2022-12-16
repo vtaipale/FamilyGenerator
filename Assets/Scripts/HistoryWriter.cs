@@ -11,6 +11,9 @@ public class HistoryWriter : MonoBehaviour
 	
 	public FamilyGenerator FamilyGenner;
 	
+	public List<FamilyMember>	Pcs = new List<FamilyMember>();
+
+	
 	public void WriteHistory(FamilyMember Target)
 	{
 		TheHistory = "#NuHistory";
@@ -292,6 +295,66 @@ public class HistoryWriter : MonoBehaviour
 
 		return returnoitava;
 	}
+	
+	public void b_FindEveryPcRoots()
+	{	
+		string returnoitava = "ALL PCS\n\n" ;
+		foreach (FamilyMember PcChar in this.Pcs)
+		{
+				returnoitava += this.FindCharacterRoots(PcChar) +"\n\n";
+		}
+			
+		TheHistory = returnoitava;
+	}
+	
+	public void b_FindCharacterRoots(FamilyMember Question)
+	{
+		this.FindCharacterRoots(Question);
+	}
+ 
+	private string FindCharacterRoots(FamilyMember Question)
+	{
+		string returnoitava = "ROOTS FOR " + Question.PersonHistoricalNote() + "\n\n" ;
+			
+		List<FamilyMember> TurnerList = new List<FamilyMember>();
+	
+		//returnoitava += RecursiveParentSearch(Question);
+		
+		foreach (FamilyMember ancestor in Question.GetComponentsInParent<FamilyMember>())
+		{
+			//Debug.Log("Rooter reached " +ancestor+ "!");
+
+			FamilyMember[] Kids = ancestor.gameObject.GetComponentsInChildren<FamilyMember>();
+			
+			if (ancestor != FamilyRoot)
+				returnoitava += ancestor.PersonHistoricalDetailCommaSeparatedValues()+";"+ Kids.Length +"\n";
+			else if (ancestor == FamilyRoot)
+				returnoitava += "And the Legendary Laurentinus the Saint before unnumbered Generations of D'Hwanta Ancestors\n";
+				
+		}
+	
+	
+		returnoitava += "\n\nSIBLINGS OF " + Question.GetFirstNames() + "\n" ;
+		
+		FamilyMember[] Siblings = Question.getImportantParent().gameObject.GetComponentsInChildren<FamilyMember>();
+		
+		foreach (FamilyMember Sibling in Siblings)
+		{
+			if ((Sibling != Question) && (Sibling !=Question.getImportantParent()))
+			{
+			FamilyMember[] Kids = Sibling.gameObject.GetComponentsInChildren<FamilyMember>();
+			
+			returnoitava += Sibling.PersonHistoricalDetailCommaSeparatedValues()+";"+ Kids.Length +"\n";
+			}
+		}
+		
+		Debug.Log("RootHistory Written for " +Question+ "!");
+		
+		TheHistory = returnoitava;
+
+		return returnoitava;
+	}
+	
 	private string AnalyzeDescendants(FamilyMember Target)
 	{
 		int AliveMembers = 0;
