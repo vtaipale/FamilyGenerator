@@ -12,13 +12,13 @@ public class FamilyTreeMaker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+      this.setupkids();  
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.setupkids();  
+        
     }
 	public void makeFamilyTree ()
 	{
@@ -34,7 +34,8 @@ public class FamilyTreeMaker : MonoBehaviour
 	{
 		foreach (FamilyMember Person in FamilyRoot.GetComponentsInChildren<FamilyMember>())
 		{
-			Person.getImportantParent().MyKids.Add(Person);
+			//Person.getImportantParent().MyKids.Add(Person);
+			
 			
 			if (Person.father != null)
 			{
@@ -44,6 +45,7 @@ public class FamilyTreeMaker : MonoBehaviour
 			{
 				Person.mother.MyKids.Add(Person);
 			}
+			
 		}
 		
 	}

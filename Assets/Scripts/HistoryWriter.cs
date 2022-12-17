@@ -246,13 +246,24 @@ public class HistoryWriter : MonoBehaviour
 	private string WriteYearBookCSV(int StartYear)
 	{
 		string returnoitava = "";
-			
+		
 			
 		List<FamilyMember> TurnerList = new List<FamilyMember>();
 	
-		foreach (FamilyMember Person in FamilyGenner.GetAllLivingAdultsFilteredByCulture(StartYear, "owly", false))
+		foreach (FamilyMember Person in FamilyGenner.GetAllLivingAdults(StartYear))
 		{
+			if (Person.death > StartYear)
+			{
+				Person.living = true;
+				Person.death = 9999;
+				Person.deathreason = "no";
+			}
+			if (Person.marriageyear > StartYear)
+			{
+				Person.marriageyear = 0;
+			}
 			TurnerList.Add(Person);
+			
 		}
 		foreach (FamilyMember Person in TurnerList)
 		{
@@ -271,6 +282,7 @@ public class HistoryWriter : MonoBehaviour
 		this. FindParent(Question);
 	}
 	
+	//search for potential parent for character
 	private string FindParent(FamilyMember Question)
 	{
 		string returnoitava = "";
